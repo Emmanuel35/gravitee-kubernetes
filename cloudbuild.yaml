@@ -77,11 +77,11 @@ substitutions:
     _GRAVITEE_VERSION: latest
     _MONGODB_VERSION: latest
     _MONGODB_HOST: mongodb
-    _MONGODB_PORT: 27017
+    _MONGODB_PORT: "27017"
     _MONGODB_USER: root
     _MONGODB_PWD: example123
     _ELASTIC_HOST: elasticsearch-es-http
-    _ELASTIC_PORT: 9200
+    _ELASTIC_PORT: "9200"
      
 options:
     substitution_option: 'ALLOW_LOOSE'
