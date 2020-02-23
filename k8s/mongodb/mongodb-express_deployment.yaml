@@ -1,0 +1,29 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: mongo-express
+  labels:
+    app: mongo-express
+spec:
+  selector:
+    matchLabels:
+      app: mongo-express
+  replicas: 1 
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: mongo-express
+    spec:
+      containers:
+      - name: mongo-express
+        image: mongo-express:${MONGO_VERSION}
+        ports:
+        - containerPort: 8081
+        env:
+        - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+          value: ${MONGO_USER}
+        - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+          value: ${MONGO_PASSWORD}
+

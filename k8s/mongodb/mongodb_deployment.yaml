@@ -1,0 +1,29 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: mongodb
+  labels:
+    app: mongodb
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  replicas: 1 
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:${MONGO_VERSION}
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: ${MONGO_USER}
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: ${MONGO_PASSWORD}        
+

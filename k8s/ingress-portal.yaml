@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: management
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.global-static-ip-name: gravitee-management-ip
+  labels:
+    app: gravitee
+spec:
+  rules:
+  - http: 
+      paths:
+      - path: /*
+        backend:
+          serviceName: management-api
+          servicePort: 8083

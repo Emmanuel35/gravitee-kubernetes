@@ -1,0 +1,90 @@
+steps:
+  # Clone Git local
+#  - name: gcr.io/cloud-builders/git
+#    args: ["fetch", "--unshallow"]
+
+  # Deploy certificate configuration
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - apply
+      - -f
+      - k8s/certificates/
+      - --record
+    env:
+      - "CLOUDSDK_COMPUTE_REGION=$_ZONE"
+      - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
+
+  # Deploy mongodb configuration
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - apply
+      - -f
+      - k8s/mongodb/
+      - --record
+    env:
+      - "CLOUDSDK_COMPUTE_REGION=$_ZONE"
+      - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
+      - "MONGO_VERSION=$_MONGODB_VERSION"
+      - "MONGO_INITDB_ROOT_USERNAME=$_MONGODB_USER"
+      - "MONGO_INITDB_ROOT_PASSWORD=$_MONGODB_PWD"
+
+  # Deploy Elastic configuration
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - apply
+      - -f
+      - k8s/elastic/
+      - --record
+    env:
+      - "CLOUDSDK_COMPUTE_REGION=$_ZONE"
+      - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
+
+  # Deploy Gateway configuration
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - apply
+      - -f
+      - k8s/gateway/
+      - --record
+    env:
+      - "CLOUDSDK_COMPUTE_REGION=$_ZONE"
+      - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
+      - "GATEWAY_VERSION=$_GRAVITEE_VERSION"
+      - "ELASTIC_HOST=$_ELASTIC_HOST"
+      - "ELASTIC_PORT=$_ELASTIC_PORT"
+      - "MONGODB_HOST=$_MONGODB_HOST"
+      - "MONGODB_PORT=$_MONGODB_PORT"
+
+  # Deploy Management API configuration
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - apply
+      - -f
+      - k8s/management-api/
+      - --record
+    env:
+      - "CLOUDSDK_COMPUTE_REGION=$_ZONE"
+      - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
+      - "GATEWAY_VERSION=$_GRAVITEE_VERSION"
+      - "ELASTIC_HOST=$_ELASTIC_HOST"
+      - "ELASTIC_PORT=$_ELASTIC_PORT"
+      - "MONGODB_HOST=$_MONGODB_HOST"
+      - "MONGODB_PORT=$_MONGODB_PORT"
+
+substitutions:
+    _ZONE: europe-west1-b 
+    _CLUSTER_NAME: demo
+    _GRAVITEE_VERSION: latest
+    _MONGODB_VERSION: latest
+    _MONGODB_HOST: mongodb
+    _MONGODB_PORT: 27017
+    _MONGODB_USER: root
+    _MONGODB_PWD: example123
+    _ELASTIC_HOST: elasticsearch-es-http
+    _ELASTIC_PORT: 9200
+     
+options:
+    substitution_option: 'ALLOW_LOOSE'
+
+timeout: 660s
+tags: ['gravitee']

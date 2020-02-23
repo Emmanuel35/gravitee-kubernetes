@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gravitee-gateway
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.global-static-ip-name: gravitee-gateway-ip
+  labels:
+    app: gravitee
+spec:
+  rules:
+  - http: 
+      paths:
+      - path: /*
+        backend:
+          serviceName: gravitee-gateway
+          servicePort: 8082

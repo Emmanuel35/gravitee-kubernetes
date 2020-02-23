@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: middleware-solutions-gravitee-demo-management-certificate
+spec:
+  domains:
+    - management.demo.gravitee.middleware-solutions.fr
