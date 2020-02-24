@@ -22,11 +22,9 @@ spec:
         ports:
         - containerPort: 8082
         env:
-        - name: GRAVITEEIO_MONGODB_HOST
-          value: mongodb
-        - name: GRAVITEEIO_MONGODB_PORT
-          value: "27017"
-        - name: GRAVITEEIO_ELASTIC_HOST
-          value: elasticsearch
-        - name: GRAVITEEIO_ELASTIC_PORT
-          value: "9200"
+        - name: gravitee_management_mongodb_uri
+          value: mongodb://mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
+        - name: gravitee_ratelimit_mongodb_uri
+          value: mongodb://mongodb:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000
+        - name: gravitee_reporters_elasticsearch_endpoints_0
+          value: http://elasticsearch:9200
