@@ -1,0 +1,26 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: management-ui
+  labels:
+    app: management-ui
+spec:
+  selector:
+    matchLabels:
+      app: management-ui
+  replicas: 1 
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: management-ui
+    spec:
+      containers:
+      - name: management-ui
+        image: graviteeio/management-ui:latest
+        ports:
+        - containerPort: 8081
+        env:
+        - name: MGMT_API_URL
+          value: http://management-api:8083/management/

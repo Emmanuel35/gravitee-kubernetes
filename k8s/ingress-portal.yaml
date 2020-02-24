@@ -13,10 +13,6 @@ spec:
   - host: portal.demo.gravitee.middleware-solutions.net
     http: 
       paths:
-      - path: /management/*
-        backend:
-          serviceName: management-api
-          servicePort: 8083
       - path: /kibana/*
         backend:
           serviceName: kibana-kb-http
@@ -25,3 +21,7 @@ spec:
         backend:
           serviceName: mongo-express
           servicePort: 8081
+      - path: /*
+        backend:
+          serviceName: management-ui
+          servicePort: 80
