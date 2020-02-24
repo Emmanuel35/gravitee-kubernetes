@@ -24,3 +24,7 @@ spec:
           requests:
             storage: 5Gi
         storageClassName: standard
+  http:
+    service:
+      spec:
+        type: NodePort
