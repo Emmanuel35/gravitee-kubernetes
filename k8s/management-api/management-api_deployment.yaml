@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: management-api
-        image: graviteeio/management-api:${MANAGEMENTAPI_VERSION}
+        image: graviteeio/management-api:latest
         ports:
         - containerPort: 8083
         env:
