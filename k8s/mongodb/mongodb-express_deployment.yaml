@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: mongo-express
-        image: mongo-express:${MONGO_VERSION}
+        image: mongo-express:${_MONGODB_VERSION}
         ports:
         - containerPort: 8081
         env:
