@@ -37,7 +37,7 @@ steps:
     env:
       - "CLOUDSDK_COMPUTE_REGION=$_ZONE"
       - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
-      
+
   # Deploy Elastic configuration
   - name: "gcr.io/cloud-builders/kubectl"
     args:
@@ -80,6 +80,17 @@ steps:
       - "ELASTIC_PORT=$_ELASTIC_PORT"
       - "MONGODB_HOST=$_MONGODB_HOST"
       - "MONGODB_PORT=$_MONGODB_PORT"
+
+  # Deploy Ingress configuration
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - apply
+      - -f
+      - k8s/
+      - --record
+    env:
+      - "CLOUDSDK_COMPUTE_REGION=$_ZONE"
+      - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
 
 substitutions:
     _ZONE: europe-west1-b 
