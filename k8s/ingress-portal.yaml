@@ -1,18 +1,27 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: management
+  name: portal-gravitee
   namespace: default
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    kubernetes.io/ingress.global-static-ip-name: gravitee-management-ip
+    kubernetes.io/ingress.global-static-ip-name: gravitee-portal-ip
   labels:
     app: gravitee
 spec:
   rules:
-  - http: 
+  - host: portal.demo.gravitee.middleware-solutions.net
+    http: 
       paths:
-      - path: /*
+      - path: /management/*
         backend:
           serviceName: management-api
           servicePort: 8083
+      - path: /kibana/*
+        backend:
+          serviceName: kibana
+          servicePort: 5601
+      - path: /mongo-express/*
+        backend:
+          serviceName: mongo-express
+          servicePort: 8081

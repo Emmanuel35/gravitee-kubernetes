@@ -10,7 +10,8 @@ metadata:
     app: gravitee
 spec:
   rules:
-  - http: 
+  - host: gateway.demo.gravitee.middleware-solutions.net
+    http: 
       paths:
       - path: /*
         backend:
