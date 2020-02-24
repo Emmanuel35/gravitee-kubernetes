@@ -81,6 +81,17 @@ steps:
       - "MONGODB_HOST=$_MONGODB_HOST"
       - "MONGODB_PORT=$_MONGODB_PORT"
 
+  # Deploy Management API configuration
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - apply
+      - -f
+      - k8s/management-ui/
+      - --record
+    env:
+      - "CLOUDSDK_COMPUTE_REGION=$_ZONE"
+      - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
+
   # Deploy Ingress configuration
   - name: "gcr.io/cloud-builders/kubectl"
     args:
