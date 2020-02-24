@@ -15,5 +15,5 @@ spec:
       paths:
       - path: /*
         backend:
-          serviceName: gravitee-gateway
+          serviceName: gateway
           servicePort: 8082
