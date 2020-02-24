@@ -23,10 +23,10 @@ spec:
         - containerPort: 8082
         env:
         - name: GRAVITEEIO_MONGODB_HOST
-          value: ${MONGODB_HOST}
+          value: mongodb
         - name: GRAVITEEIO_MONGODB_PORT
-          value: ${MONGODB_PORT}
+          value: "27017"
         - name: GRAVITEEIO_ELASTIC_HOST
-          value: ${ELASTIC_HOST}
+          value: elasticsearch
         - name: GRAVITEEIO_ELASTIC_PORT
-          value: ${ELASTIC_PORT}
+          value: "9200"

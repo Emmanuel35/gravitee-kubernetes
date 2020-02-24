@@ -23,7 +23,7 @@ spec:
         - containerPort: 27017
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
-          value: ${_MONGODB_USER}
+          value: mongoadm
         - name: MONGO_INITDB_ROOT_PASSWORD
-          value: ${_MONGODB_PWD}        
+          value: mongoadm123       
 
