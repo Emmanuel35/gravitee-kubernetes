@@ -28,6 +28,13 @@ steps:
       - "MONGO_INITDB_ROOT_USERNAME=$_MONGODB_USER"
       - "MONGO_INITDB_ROOT_PASSWORD=$_MONGODB_PWD"
 
+    # Deploy Operator for Elastic configuration
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - apply
+      - -f
+      - https://download.elastic.co/downloads/eck/1.0.1/all-in-one.yaml
+
   # Deploy Elastic configuration
   - name: "gcr.io/cloud-builders/kubectl"
     args:
