@@ -21,6 +21,21 @@ spec:
         image: graviteeio/gateway:latest
         ports:
         - containerPort: 8082
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8082
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8082
         env:
         - name: GRAVITEE_DS_MONGODB_HOST
           value: mongodb
@@ -30,3 +45,7 @@ spec:
           value: elasticsearch-es-http
         - name: GRAVITEE_DS_ELASTIC_PORT
           value: "9200"
+        - name: GIO_MIN_MEM
+          value: 128m
+        - name: GIO_MAX_MEM
+          value: 256m
