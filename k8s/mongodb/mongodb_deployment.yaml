@@ -21,9 +21,10 @@ spec:
         image: mongo:latest
         ports:
         - containerPort: 27017
-        env:
-        - name: MONGO_INITDB_ROOT_USERNAME
-          value: mongoadm
-        - name: MONGO_INITDB_ROOT_PASSWORD
-          value: mongoadm123       
+#        env:
+# sans ces variables, la securité est desactivée
+#        - name: MONGO_INITDB_ROOT_USERNAME
+#          value: mongoadm
+#        - name: MONGO_INITDB_ROOT_PASSWORD
+#          value: mongoadm123       
 
