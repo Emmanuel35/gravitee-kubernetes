@@ -30,3 +30,7 @@ spec:
           value: elasticsearch-es-http
         - name: GRAVITEE_DS_ELASTIC_PORT
           value: "9200"
+        - name: GRAVITEE_MANAGEMENT_MONGODB_USERNAME
+          value: mongoadm
+        - name: GRAVITEE_MANAGEMENT_MONGODB_PASSWORD
+          value: mongoadm123        

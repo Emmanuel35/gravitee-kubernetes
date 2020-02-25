@@ -41,3 +41,7 @@ spec:
           value: 128m
         - name: GIO_MAX_MEM
           value: 256m
+        - name: GRAVITEE_MANAGEMENT_MONGODB_USERNAME
+          value: mongoadm
+        - name: GRAVITEE_MANAGEMENT_MONGODB_PASSWORD
+          value: mongoadm123
