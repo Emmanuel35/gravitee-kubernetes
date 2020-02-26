@@ -19,22 +19,19 @@ spec:
       containers:
       - image: launcher.gcr.io/google/mongodb3
         name: mongodb
+        ports:
+        - containerPort: 27017
         volumeMounts:
           - name: data
             mountPath: /data/db
             subPath: data
-        requests:
-          cpu: 50m
-          memory: 50Mi
-        limits:
-          cpu: 200m
-          memory: 200Mi 
-#        env:
-# sans ces variables, la securité est desactivée
-#        - name: MONGO_INITDB_ROOT_USERNAME
-#          value: mongoadm
-#        - name: MONGO_INITDB_ROOT_PASSWORD
-#          value: mongoadm123       
+        resources:
+          requests:
+            cpu: 50m
+            memory: 50Mi
+          limits:
+            cpu: 200m
+            memory: 200Mi     
       volumes:
         - name: data
           persistentVolumeClaim:
