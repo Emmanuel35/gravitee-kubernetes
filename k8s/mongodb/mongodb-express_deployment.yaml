@@ -16,7 +16,7 @@ spec:
       labels:
         app: mongo-express
     spec:
-      containers:
+      containers:  
       - name: mongo-express
         image: mongo-express:latest
         ports:
