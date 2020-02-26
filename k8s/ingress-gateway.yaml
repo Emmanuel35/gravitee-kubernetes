@@ -4,9 +4,9 @@ metadata:
   name: gravitee-gateway
   namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+#    nginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.global-static-ip-name: gravitee-gateway-ip
-    networking.gke.io/managed-certificates: middleware-solutions-gravitee-demo-portal-certificate
+    networking.gke.io/managed-certificates: middleware-solutions-gravitee-demo-gateway-certificate
     kubernetes.io/ingress.allow-http: "false"
   labels:
     app: gravitee
