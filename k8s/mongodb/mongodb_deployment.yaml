@@ -19,6 +19,8 @@ spec:
       containers:
       - image: launcher.gcr.io/google/mongodb3
         name: mongodb
+        command:
+        - --bind_ip_all
         ports:
         - containerPort: 27017
         volumeMounts:
