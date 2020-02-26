@@ -20,7 +20,10 @@ spec:
       - image: launcher.gcr.io/google/mongodb3
         name: mongodb
         args:
+        # toutes IP autorisées
         - --bind_ip_all
+        # storage document-level. cf https://docs.mongodb.com/manual/core/wiredtiger/
+        - --storageEngine wiredTiger
         ports:
         - containerPort: 27017
         volumeMounts:
