@@ -17,7 +17,7 @@ spec:
         app: mongodb
     spec:
       containers:
-      - image: launcher.gcr.io/google/mongodb3
+      - image: mongodb:4
         name: mongodb
         args:
         # toutes IP autorisées
