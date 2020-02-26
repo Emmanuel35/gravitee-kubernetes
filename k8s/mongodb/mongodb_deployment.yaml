@@ -10,14 +10,14 @@ spec:
       app: mongodb
   replicas: 1 
   strategy:
-    type: RollingUpdate
+    type: Recreate
   template:
     metadata:
       labels:
         app: mongodb
     spec:
       containers:
-      - image: launcher.gcr.io/google/mongodb4
+      - image: mongo:4
         name: mongodb
         args:
         # toutes IP autorisées
