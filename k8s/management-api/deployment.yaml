@@ -27,6 +27,10 @@ spec:
         - name: GRAVITEE_DS_MONGODB_PORT
           value: "27017"
         - name: GRAVITEE_DS_ELASTIC_HOST
-          value: "elastic:sx6zgx7k9z49sf9hkfxkzwz8@elasticsearch-es-http"
+          value: elasticsearch-es-http
         - name: GRAVITEE_DS_ELASTIC_PORT
           value: "9200"
+        - name: GRAVITEE_ANALYTICS_ELASTICSEARCH_SECURITY_USERNAME
+          value: elastic
+        - name: GRAVITEE_ANALYTICS_ELASTICSEARCH_SECURITY_PASSWORD
+          value: sx6zgx7k9z49sf9hkfxkzwz8
