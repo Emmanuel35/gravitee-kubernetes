@@ -48,7 +48,7 @@ steps:
     env:
       - "CLOUDSDK_COMPUTE_REGION=$_ZONE"
       - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
-
+        
   # Deploy Gateway configuration
   - name: "gcr.io/cloud-builders/kubectl"
     args:
