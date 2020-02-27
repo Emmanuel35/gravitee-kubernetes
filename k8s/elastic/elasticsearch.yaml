@@ -19,6 +19,7 @@ spec:
         containers:
         - name: elasticsearch
           env:
+          # min = max
           - name: ES_JAVA_OPTS
             value: "-Xms512m -Xmx512m"  
     volumeClaimTemplates:
