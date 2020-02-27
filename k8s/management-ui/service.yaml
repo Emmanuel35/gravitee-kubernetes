@@ -12,6 +12,6 @@ spec:
   selector:
     app: management-ui
 #  type: NodePort
-    type: ClusterIP
+  type: LoadBalancer
 
 
