@@ -8,7 +8,7 @@ spec:
   version: 7.6.0
   nodeSets:
   - name: default
-    count: 2
+    count: 1
     config:
       node.master: true
       node.data: true
@@ -30,12 +30,12 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 5Gi
-        storageClassName: standard
+            storage: 1Gi
+#        storageClassName: standard
   http:
     service:
       spec:
-        type: NodePort
+        type: ClusterIP
     tls:
       selfSignedCertificate:
         disabled: true

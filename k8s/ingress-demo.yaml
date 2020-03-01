@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: demo-gravitee
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: gravitee-demo-ip
+    networking.gke.io/managed-certificates: middleware-solutions-gravitee-demo-certificate
+    kubernetes.io/ingress.allow-http: "false"
+#    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: gravitee
+spec:
+  rules:
+  - host: demo.gravitee.middleware-solutions.net
+    http: 
+      paths:
+      - path: /*
+        backend:
+          serviceName: gravitee-apim-ui
+          servicePort: 8002
+      - path: /gateway/*
+        backend:
+          serviceName: gravitee-apim-gateway
+          servicePort: 82

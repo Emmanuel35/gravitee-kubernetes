@@ -10,7 +10,4 @@ gcloud config set filestore/zone $GCP_ZONE
 gcloud config set run/region $GCP_REGION
 
 # connect kubectl
-gcloud container clusters get-credentials $GCP_PROJECT --zone $GCP_ZONE
-
-# for elastic
-kubectl apply -f https://download.elastic.co/downloads/eck/1.0.1/all-in-one.yaml
+gcloud container clusters get-credentials $GCP_CLUSTER --zone $GCP_ZONE

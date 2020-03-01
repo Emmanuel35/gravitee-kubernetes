@@ -20,7 +20,8 @@ spec:
       - name: management-ui
         image: graviteeio/management-ui:latest
         ports:
-        - containerPort: 8081
+        - containerPort: 80
         env:
+        # URL externe
         - name: MGMT_API_URL
-          value: http://management-api:8083/management/
+          value: https://portal.demo.gravitee.middleware-solutions.net/management/

@@ -19,11 +19,15 @@ spec:
         backend:
           serviceName: kibana-kb-http
           servicePort: 5601
-      - path: /mongo-express/*
-        backend:
-          serviceName: mongo-express
-          servicePort: 8081
+#      - path: /mongo-express/*
+#        backend:
+#          serviceName: mongo-express
+#          servicePort: 8081
       - path: /*
         backend:
           serviceName: management-ui
           servicePort: 80
+      - path: /management/*
+        backend:
+          serviceName: management-api
+          servicePort: 8083

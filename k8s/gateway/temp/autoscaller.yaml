@@ -17,7 +17,7 @@ spec:
   - type: Resource
     resource:
       name: memory
-      targetAverageUtilization: 95
+      targetAverageUtilization: 90
   # Uncomment these lines if you create the custom packets_per_second metric and
   # configure your app to export the metric.
   # - type: Pods
